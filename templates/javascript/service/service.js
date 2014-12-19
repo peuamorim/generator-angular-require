@@ -8,8 +8,8 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Service in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.services.<%= classedName %>', [])
-	.service('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
+      .directive('<%= artifactName %>Service', function () {
 	// AngularJS will instantiate a singleton by calling "new" on this function
 	});
 });

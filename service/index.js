@@ -26,9 +26,9 @@ var ServiceGenerator = ScriptBase.extend({
     injectDependenciesToApp: function() {
       angularUtils.injectIntoFile(
         this.config.get('appPath'),
-        'services/' + this.name.toLowerCase(),
-        this.classedName + 'Service',
-        this.scriptAppName + '.services.' + this.classedName
+          'services/' + this.name.toLowerCase(),
+          '',
+          this.scriptAppName + '.' + this.moduleName + '.services'
       );
     }
   }

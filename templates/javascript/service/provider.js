@@ -8,8 +8,8 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Provider in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.services.<%= classedName %>', [])
-    .provider('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
+      .directive('<%= artifactName %>Provider', function () {
 
       // Private variables
       var salutation = 'Hello';

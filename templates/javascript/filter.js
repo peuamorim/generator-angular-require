@@ -9,10 +9,10 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Filter in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.filters.<%= classedName %>', [])
-  	.filter('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.filters', [])
+      .directive('<%= artifactName %>Filter', function () {
       return function (input) {
-      	return '<%= cameledName %> filter: ' + input;
+      	return '<%= artifactName %> filter: ' + input;
       };
   	});
 });

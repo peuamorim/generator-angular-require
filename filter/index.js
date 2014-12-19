@@ -23,9 +23,9 @@ var FilterGenerator = ScriptBase.extend({
   injectDependenciesToApp: function () {
     angularUtils.injectIntoFile(
       this.config.get('appPath'),
-      'filters/' + this.name.toLowerCase(),
-      this.classedName + 'Filter',
-      this.scriptAppName + '.filters.' + this.classedName
+        'filters/' + this.name.toLowerCase(),
+        '',
+        this.scriptAppName + '.' + this.moduleName + '.filters'
     );
   }
 });

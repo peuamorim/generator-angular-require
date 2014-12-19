@@ -8,8 +8,8 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Factory in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.services.<%= classedName %>', [])
-    .factory('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
+      .directive('<%= artifactName %>Factory', function () {
       // Service logic
       // ...
 

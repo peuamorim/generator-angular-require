@@ -30,8 +30,9 @@ var ControllerGenerator = ScriptBase.extend({
     angularUtils.injectIntoFile(
       this.config.get('appPath'),
       'controllers/' + this.name.toLowerCase(),
-      this.classedName + 'Ctrl',
-      this.scriptAppName + '.controllers.' + this.classedName + 'Ctrl'
+        '',
+      //this.artifactName + 'Ctrl',
+      this.scriptAppName + '.' + this.moduleName + '.controllers'
     );
   }
 });

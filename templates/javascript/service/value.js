@@ -8,6 +8,6 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Value in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.services.<%= classedName %>', [])
-	.value('<%= cameledName %>', 42);
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
+      .directive('<%= artifactName %>Value', function () {
 });

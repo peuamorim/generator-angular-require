@@ -8,9 +8,9 @@ define(['angular'], function (angular) {
    * # <%= classedName %>
    * Decorator of the <%= scriptAppName %>
    */
-  angular.module('<%= scriptAppName %>.decorators.<%= classedName %>', [])
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.decorators', [])
     .config(function ($provide) {
-      $provide.decorator('<%= cameledName %>', function ($delegate) {
+      $provide.decorator('<%= artifactName %>Decorator', function ($delegate) {
           // decorate the $delegate
           return $delegate;
       });

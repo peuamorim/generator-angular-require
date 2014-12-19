@@ -79,9 +79,9 @@ var DecoratorGenerator = ScriptBase.extend({
   injectDependenciesToApp: function () {
     angularUtils.injectIntoFile(
       this.config.get('appPath'),
-      'decorators/' + this.name.toLowerCase() + "Decorator",
-      this.classedName + 'Decorator',
-      this.scriptAppName + '.decorators.' + this.classedName
+        'decorators/' + this.name.toLowerCase(),
+        '',
+        this.scriptAppName + '.' + this.moduleName + '.decorators'
     );
   }
 });

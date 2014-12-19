@@ -7,8 +7,8 @@ define(['angular'], function (angular) {
    * @description
    * # <%= cameledName %>
    */
-  angular.module('<%= scriptAppName %>.directives.<%= classedName %>', [])
-    .directive('<%= cameledName %>', function () {
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.directives', [])
+    .directive('<%= artifactName %>Directive', function () {
       return {
         template: '<div></div>',
         restrict: 'E',

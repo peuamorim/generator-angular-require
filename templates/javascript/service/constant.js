@@ -8,6 +8,7 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Constant in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.services.<%= classedName %>', [])
-	.constant('<%= cameledName %>', 42);
+  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
+      .constant('<%= artifactName %>Constant', 42);
+
 });

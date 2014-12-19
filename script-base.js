@@ -20,6 +20,14 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 
     this.cameledName = this._.camelize(this.name);
     this.classedName = this._.classify(this.name);
+    this.artifactName = this.uncapitalize(this.classedName);
+
+    var parts = this.name.split('/');
+    this.moduleName = parts.slice(0, parts.length-2).join('.');
+
+    console.log(this.moduleName);
+    console.log(this.artifactName);
+
 
     if (typeof this.env.options.appPath === 'undefined') {
       this.env.options.appPath = this.options.appPath;
@@ -98,6 +106,11 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
     if (!skipAdd) {
       this.addScriptToIndex(path.join(targetDirectory, this.name));
     }
+  },
+
+  uncapitalize : function(str){
+    str = str == null ? '' : String(str);
+    return str.charAt(0).toLowerCase() + str.slice(1);
   }
 });
 

@@ -23,9 +23,9 @@ var DirectiveGenerator = ScriptBase.extend({
   injectDependenciesToApp: function() {
     angularUtils.injectIntoFile(
       this.config.get('appPath'),
-      'directives/' + this.name.toLowerCase(),
-      this.classedName + 'Directive',
-      this.scriptAppName + '.directives.' + this.classedName
+        'directives/' + this.name.toLowerCase(),
+        '',
+        this.scriptAppName + '.' + this.moduleName + '.directives'
     );
   }
 });
