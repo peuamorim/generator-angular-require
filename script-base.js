@@ -22,11 +22,14 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
     this.classedName = this._.classify(this.name);
     this.artifactName = this.uncapitalize(this.classedName);
 
+
     var parts = this.name.split('/');
     this.moduleName = parts.slice(0, parts.length-1).join('.');
-
-    console.log(parts.slice(0, parts.length-1));
-    console.log(this.name);
+    if (this.moduleName) {
+      this.dot = '.';
+    } else {
+      this.dot = '';
+    }
 
 
     if (typeof this.env.options.appPath === 'undefined') {
@@ -57,6 +60,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
   },
 
   appTemplate: function(src, dest) {
+    console.log(this.config.get('appPath'));
     yeoman.generators.Base.prototype.template.apply(this, [
       src + this.scriptSuffix,
       path.join(this.config.get('appPath'), dest.toLowerCase()) + this.scriptSuffix

@@ -3,5 +3,5 @@ define([
 ], function (angular) {
   'use strict';
 
-  return angular.module('<%= scriptAppName %>.<%= moduleName %>.<%= artifactType %>', []);
+  return angular.module('<%= scriptAppName %>.<%= moduleName %><%= dot %><%= artifactType %>', []);
 });
