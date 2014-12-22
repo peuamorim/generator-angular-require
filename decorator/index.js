@@ -14,6 +14,7 @@ var DecoratorGenerator = ScriptBase.extend({
   constructor: function(name) {
     ScriptBase.apply(this, arguments);
     this.fileName = this.name;
+    this.artifactType = 'decorators';
 
     util.inherits(DecoratorGenerator, ScriptBase);
   },

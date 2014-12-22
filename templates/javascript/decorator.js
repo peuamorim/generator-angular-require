@@ -1,4 +1,4 @@
-define(['angular'], function (angular) {
+define(['./module'], function (module) {
   'use strict';
 
   /**
@@ -8,8 +8,7 @@ define(['angular'], function (angular) {
    * # <%= classedName %>
    * Decorator of the <%= scriptAppName %>
    */
-  angular.module('<%= scriptAppName %>.<%= moduleName %>.decorators', [])
-    .config(function ($provide) {
+    module.config(function ($provide) {
       $provide.decorator('<%= artifactName %>Decorator', function ($delegate) {
           // decorate the $delegate
           return $delegate;

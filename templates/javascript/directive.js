@@ -1,4 +1,4 @@
-define(['angular'], function (angular) {
+define(['./module'], function (module) {
   'use strict';
 
   /**
@@ -7,8 +7,7 @@ define(['angular'], function (angular) {
    * @description
    * # <%= cameledName %>
    */
-  angular.module('<%= scriptAppName %>.<%= moduleName %>.directives', [])
-    .directive('<%= artifactName %>Directive', function () {
+    module.directive('<%= artifactName %>Directive', function () {
       return {
         template: '<div></div>',
         restrict: 'E',

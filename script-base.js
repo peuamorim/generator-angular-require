@@ -23,10 +23,10 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
     this.artifactName = this.uncapitalize(this.classedName);
 
     var parts = this.name.split('/');
-    this.moduleName = parts.slice(0, parts.length-2).join('.');
+    this.moduleName = parts.slice(0, parts.length-1).join('.');
 
-    console.log(this.moduleName);
-    console.log(this.artifactName);
+    console.log(parts.slice(0, parts.length-1));
+    console.log(this.name);
 
 
     if (typeof this.env.options.appPath === 'undefined') {
@@ -62,6 +62,14 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
       path.join(this.config.get('appPath'), dest.toLowerCase()) + this.scriptSuffix
     ]);
   },
+
+  moduleTemplate: function(src, dest) {
+    yeoman.generators.Base.prototype.template.apply(this, [
+      src + this.scriptSuffix,
+      path.join(this.config.get('appPath'), dest.toLowerCase()) + this.scriptSuffix
+    ]);
+  },
+
 
   testTemplate: function(src, dest) {
     yeoman.generators.Base.prototype.template.apply(this, [
@@ -101,8 +109,16 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
       this.cameledName = this.classedName;
     }
 
+    var parts = this.name.split('/');
+    parts[parts.length-1] = 'module';
+    var module = parts.join('/');
+
     this.appTemplate(appTemplate, path.join('scripts', targetDirectory, this.name));
-    this.testTemplate(testTemplate, path.join(targetDirectory, this.name));
+    this.moduleTemplate('module', path.join('scripts', targetDirectory, module));
+
+    if (testTemplate != null) {
+      this.testTemplate(testTemplate, path.join(targetDirectory, this.name));
+    }
     if (!skipAdd) {
       this.addScriptToIndex(path.join(targetDirectory, this.name));
     }

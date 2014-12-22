@@ -1,4 +1,4 @@
-define(['angular'], function (angular) {
+define(['./module'], function (module) {
   'use strict';
 
   /**
@@ -8,8 +8,7 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Factory in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
-      .directive('<%= artifactName %>Factory', function () {
+    module.service('<%= artifactName %>Factory', function () {
       // Service logic
       // ...
 

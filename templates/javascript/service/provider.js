@@ -1,4 +1,4 @@
-define(['angular'], function (angular) {
+define(['./module'], function (module) {
   'use strict';
 
   /**
@@ -8,8 +8,7 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Provider in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
-      .directive('<%= artifactName %>Provider', function () {
+  module.directive('<%= artifactName %>Provider', function () {
 
       // Private variables
       var salutation = 'Hello';

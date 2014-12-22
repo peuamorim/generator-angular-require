@@ -1,4 +1,4 @@
-define(['angular'], function (angular) {
+define(['./module'], function (module) {
   'use strict';
 
   /**
@@ -8,7 +8,6 @@ define(['angular'], function (angular) {
    * # <%= cameledName %>
    * Constant in the <%= scriptAppName %>.
    */
-  angular.module('<%= scriptAppName %>.<%= moduleName %>.services', [])
-      .constant('<%= artifactName %>Constant', 42);
+    module.constant('<%= artifactName %>Constant', 42);
 
 });

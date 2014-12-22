@@ -8,6 +8,7 @@ var yeoman = require('yeoman-generator');
 var FilterGenerator = ScriptBase.extend({
   constructor: function() {
     ScriptBase.apply(this, arguments);
+    this.artifactType = 'filters';
   },
 
   createFilterFiles: function() {
