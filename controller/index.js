@@ -34,7 +34,7 @@ var ControllerGenerator = ScriptBase.extend({
       'controllers/' + this.name.toLowerCase(),
         '',
       //this.artifactName + 'Ctrl',
-      this.scriptAppName + '.' + this.moduleName + '.controllers'
+      this.scriptAppName + '.' + this.moduleName + this.dot + 'controllers'
     );
   }
 });

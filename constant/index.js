@@ -8,14 +8,14 @@ var yeoman = require('yeoman-generator');
 var ConstantGenerator = ScriptBase.extend({
   constructor: function(name) {
     ScriptBase.apply(this, arguments);
-    this.artifactType = 'services';
+    this.artifactType = 'constants';
   },
 
   createServiceFiles: function() {
     this.generateSourceAndTest(
       'service/constant',
       'spec/service',
-      'services',
+      'constants',
       true	// Skip adding the script to the index.html file of the application
     );
   },
@@ -24,9 +24,9 @@ var ConstantGenerator = ScriptBase.extend({
   injectDependenciesToApp: function () {
     angularUtils.injectIntoFile(
       this.config.get('appPath'),
-        'services/' + this.name.toLowerCase(),
+        'constants/' + this.name.toLowerCase(),
         '',
-        this.scriptAppName + '.' + this.moduleName + '.services'
+        this.scriptAppName + '.' + this.moduleName + this.dot + 'constants'
     );
   }
 });

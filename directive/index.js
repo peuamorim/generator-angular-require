@@ -26,7 +26,7 @@ var DirectiveGenerator = ScriptBase.extend({
       this.config.get('appPath'),
         'directives/' + this.name.toLowerCase(),
         '',
-        this.scriptAppName + '.' + this.moduleName + '.directives'
+        this.scriptAppName + '.' + this.moduleName + this.dot + 'directives'
     );
   }
 });

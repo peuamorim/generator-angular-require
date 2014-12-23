@@ -26,7 +26,7 @@ var FactoryGenerator = ScriptBase.extend({
       this.config.get('appPath'),
         'services/' + this.name.toLowerCase(),
         '',
-        this.scriptAppName + '.' + this.moduleName + '.services'
+        this.scriptAppName + '.' + this.moduleName + this.dot + 'services'
     );
   }
 });

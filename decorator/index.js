@@ -82,7 +82,7 @@ var DecoratorGenerator = ScriptBase.extend({
       this.config.get('appPath'),
         'decorators/' + this.name.toLowerCase(),
         '',
-        this.scriptAppName + '.' + this.moduleName + '.decorators'
+        this.scriptAppName + '.' + this.moduleName + this.dot + 'decorators'
     );
   }
 });

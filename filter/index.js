@@ -26,7 +26,7 @@ var FilterGenerator = ScriptBase.extend({
       this.config.get('appPath'),
         'filters/' + this.name.toLowerCase(),
         '',
-        this.scriptAppName + '.' + this.moduleName + '.filters'
+        this.scriptAppName + '.' + this.moduleName + this.dot + 'filters'
     );
   }
 });
