@@ -1,12 +1,14 @@
 define(['./module'], function (module) {
-  'use strict';
+	'use strict';
 
-  /**
-   * @ngdoc service
-   * @name <%= scriptAppName %>.<%= cameledName %>
-   * @description
-   * # <%= cameledName %>
-   * Value in the <%= scriptAppName %>.
-   */
-      module.service('<%= artifactName %>Value', function () {
+	/**
+	 * @ngdoc service
+	 * @name <%= scriptAppName %>.<%= artifactName %>
+	 * @description
+	 * # <%= artifactName %>
+	 * Value in the <%= scriptAppName %>.
+	 */
+	module.value('<%= artifactName %>Value', function () {
+
+	})
 });

@@ -1,13 +1,13 @@
 define(['./module'], function (module) {
-  'use strict';
+	'use strict';
 
-  /**
-   * @ngdoc service
-   * @name <%= scriptAppName %>.<%= cameledName %>
-   * @description
-   * # <%= cameledName %>
-   * Constant in the <%= scriptAppName %>.
-   */
-    module.constant('<%= artifactName %>Constant', 42);
+	/**
+	 * @ngdoc service
+	 * @name <%= scriptAppName %>.<%= artifactName %>
+	 * @description
+	 * # <%= artifactName %>
+	 * Constant in the <%= scriptAppName %>.
+	 */
+	module.constant('<%= artifactName %>Constant', 42);
 
 });

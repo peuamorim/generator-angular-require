@@ -6,29 +6,28 @@ var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 
 var FactoryGenerator = ScriptBase.extend({
-  constructor: function() {
-    ScriptBase.apply(this, arguments);
-    this.artifactType = 'services';
-  },
+	constructor: function () {
+		ScriptBase.apply(this, arguments);
+	},
 
-  createServiceFiles: function() {
-    this.generateSourceAndTest(
-      'service/factory',
-      'spec/service',
-      'services',
-      true	// Skip adding the script to the index.html file of the application
-    );
-  },
+	createServiceFiles: function () {
+		this.generateSourceAndTest(
+			'service/factory',
+			'spec/service',
+			'services',
+			'factory'
+		);
+	}
 
-  // Re-write the main app module to account for our new dependency
-  injectDependenciesToApp: function() {
-    angularUtils.injectIntoFile(
-      this.config.get('appPath'),
-        'services/' + this.name.toLowerCase(),
-        '',
-        this.scriptAppName + '.' + this.moduleName + this.dot + 'services'
-    );
-  }
+	//// Re-write the main app module to account for our new dependency
+	injectDependenciesToApp: function () {
+
+		angularUtils.injectIntoPackageIncludeFile(
+			path.join('app', 'packages', this.packageName, 'include.js'),
+			path.join(this.packageName, 'services', this.fileName + '-factory'),
+			this.packageNamespace
+		);
+	}
 });
 
 module.exports = FactoryGenerator;

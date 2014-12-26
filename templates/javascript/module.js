@@ -1,7 +1,7 @@
 define([
-  'angular'
+	'angular'
 ], function (angular) {
-  'use strict';
+	'use strict';
 
-  return angular.module('<%= scriptAppName %>.<%= moduleName %><%= dot %><%= artifactType %>', []);
+	return angular.module('<%= moduleNamespace %>', []);
 });

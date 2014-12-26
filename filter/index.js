@@ -6,29 +6,28 @@ var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 
 var FilterGenerator = ScriptBase.extend({
-  constructor: function() {
-    ScriptBase.apply(this, arguments);
-    this.artifactType = 'filters';
-  },
+	constructor: function () {
+		ScriptBase.apply(this, arguments);
+		this.artifactType = 'filters';
+	},
 
-  createFilterFiles: function() {
-    this.generateSourceAndTest(
-      'filter',
-      'spec/filter',
-      'filters',
-      true	// Skip adding the script to the index.html file of the application
-    );
-  },
+	createFilterFiles: function () {
+		this.generateSourceAndTest(
+			'filter',
+			'spec/filter',
+			'filters',
+			'filter'
+		);
+	},
 
-  // Re-write the main app module to account for our new dependency
-  injectDependenciesToApp: function () {
-    angularUtils.injectIntoFile(
-      this.config.get('appPath'),
-        'filters/' + this.name.toLowerCase(),
-        '',
-        this.scriptAppName + '.' + this.moduleName + this.dot + 'filters'
-    );
-  }
+	//// Re-write the main app module to account for our new dependency
+	injectDependenciesToApp: function () {
+		angularUtils.injectIntoPackageIncludeFile(
+			path.join('app', 'packages', this.packageName, 'include.js'),
+			path.join(this.packageName, 'filters', this.fileName + '-filter'),
+			this.packageNamespace
+		);
+	}
 });
 
 module.exports = FilterGenerator;

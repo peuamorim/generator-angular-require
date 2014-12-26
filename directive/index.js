@@ -6,29 +6,28 @@ var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 
 var DirectiveGenerator = ScriptBase.extend({
-  constructor: function(name) {
-    ScriptBase.apply(this, arguments);
-    this.artifactType = 'directives';
-  },
+	constructor: function (name) {
+		ScriptBase.apply(this, arguments);
+		this.artifactType = 'directives';
+	},
 
-  createDirectiveFiles: function() {
-    this.generateSourceAndTest(
-      'directive',
-      'spec/directive',
-      'directives',
-      true	// Skip adding the script to the index.html file of the application
-    );
-  },
+	createDirectiveFiles: function () {
+		this.generateSourceAndTest(
+			'directive',
+			'spec/directive',
+			'directives',
+			'directive'
+		);
+	},
 
-  // Re-write the main app module to account for our new dependency
-  injectDependenciesToApp: function() {
-    angularUtils.injectIntoFile(
-      this.config.get('appPath'),
-        'directives/' + this.name.toLowerCase(),
-        '',
-        this.scriptAppName + '.' + this.moduleName + this.dot + 'directives'
-    );
-  }
+	//// Re-write the main app module to account for our new dependency
+	injectDependenciesToApp: function () {
+		angularUtils.injectIntoPackageIncludeFile(
+			path.join('app', 'packages', this.packageName, 'include.js'),
+			path.join(this.packageName, 'directives', this.fileName + '-directive'),
+			this.packageNamespace
+		);
+	}
 });
 
 module.exports = DirectiveGenerator;

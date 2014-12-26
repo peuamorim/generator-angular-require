@@ -13,10 +13,10 @@ var ValueGenerator = ScriptBase.extend({
 
   createServiceFiles: function() {
     this.generateSourceAndTest(
-      'service/value',
-      'spec/service',
-      'services',
-      true	// Skip adding the script to the index.html file of the application
+        'service/value',
+        'spec/service',
+        'services',
+        'service'
     );
   },
 

@@ -6,29 +6,28 @@ var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 
 var ConstantGenerator = ScriptBase.extend({
-  constructor: function(name) {
-    ScriptBase.apply(this, arguments);
-    this.artifactType = 'constants';
-  },
+	constructor: function (name) {
+		ScriptBase.apply(this, arguments);
+		this.artifactType = 'constants';
+	},
 
-  createServiceFiles: function() {
-    this.generateSourceAndTest(
-      'service/constant',
-      'spec/service',
-      'constants',
-      true	// Skip adding the script to the index.html file of the application
-    );
-  },
+	createServiceFiles: function () {
+		this.generateSourceAndTest(
+			'service/constant',
+			'spec/service',
+			'constants',
+			'constant'
+		);
+	},
 
-  // Re-write the main app module to account for our new dependency
-  injectDependenciesToApp: function () {
-    angularUtils.injectIntoFile(
-      this.config.get('appPath'),
-        'constants/' + this.name.toLowerCase(),
-        '',
-        this.scriptAppName + '.' + this.moduleName + this.dot + 'constants'
-    );
-  }
+	//// Re-write the main app module to account for our new dependency
+	injectDependenciesToApp: function () {
+		angularUtils.injectIntoPackageIncludeFile(
+			path.join('app', 'packages', this.packageName, 'include.js'),
+			path.join(this.packageName, 'constants', this.fileName + '-constant'),
+			this.packageNamespace
+		);
+	}
 });
 
 module.exports = ConstantGenerator;

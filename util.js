@@ -52,6 +52,27 @@ function injectIntoFile (appPath, moduleName, attachedComponentName, injectedMod
   }
 }
 
+function injectIntoPackageIncludeFile (packageIncludePath, modulePath, injectedModuleName) {
+
+  // Set up config object
+  var config = {
+    file: packageIncludePath,
+    needle: "",
+    splicable: [],
+    spliceWithinLine: true
+  };
+
+  config.needle = "]/*packageIncludes*/";
+  config.splicable = [ ", '" + modulePath + "'" ];
+
+  rewriteFile(config);
+
+  config.needle = "/*packageDeps*/";
+  config.splicable = [ ", '" + injectedModuleName + "'" ];
+
+  rewriteFile(config);
+}
+
 function escapeRegExp (str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
@@ -119,5 +140,6 @@ module.exports = {
   rewrite: rewrite,
   rewriteFile: rewriteFile,
   appName: appName,
-  injectIntoFile: injectIntoFile
+  injectIntoFile: injectIntoFile,
+  injectIntoPackageIncludeFile: injectIntoPackageIncludeFile
 };
