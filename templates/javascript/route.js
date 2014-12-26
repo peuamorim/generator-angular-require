@@ -1,5 +1,5 @@
 define([
-	'../app'
+	'app'
 ], function (app) {
 	'use strict';
 

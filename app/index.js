@@ -259,16 +259,21 @@ var AngularRequireJSGenerator = yeoman.generators.Base.extend({
 		this.installDependencies({skipInstall: this.options['skip-install']});
 
 		// Invoke the creation of the default controller
-		this.composeWith('controller', {arguments: ['main']}, {
-			local: require.resolve('../controller/index.js')
-		});
+		//this.composeWith('package', {arguments: ['main']}, {
+		//	local: require.resolve('../package/index.js')
+		//});
+		//
+		//// Invoke the creation of the default controller
+		//this.composeWith('route', { arguments: ['main', 'index']}, {
+		//	local: require.resolve('../route/index.js')
+		//});
 
-		// If ngRoute is specified as an install option, then create the "About" route
-		if (this.env.options.ngRoute) {
-			this.composeWith('route', {arguments: ['about']}, {
-				local: require.resolve('../route/index.js')
-			});
-		}
+		//// If ngRoute is specified as an install option, then create the "About" route
+		//if (this.env.options.ngRoute) {
+		//	this.composeWith('route', {arguments: ['about']}, {
+		//		local: require.resolve('../route/index.js')
+		//	});
+		//}
 
 		if (this.animateModule) {
 			enabledComponents.push('angular-animate/angular-animate.js');

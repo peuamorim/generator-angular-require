@@ -6,19 +6,21 @@ var angularUtils = require('../util.js');
 var yeoman = require('yeoman-generator');
 
 var ViewGenerator = ScriptBase.extend({
-  constructor: function() {
-    ScriptBase.apply(this, arguments);
-  },
+	constructor: function () {
+		ScriptBase.apply(this, arguments);
+	},
 
-  createViewFile: function() {
-    this.htmlTemplate(
-      '../common/app/views/view.html',
-      path.join(
-        'views',
-        this.name.toLowerCase() + '.html'
-      )
-    );
-  }
+	createViewFile: function () {
+		this.htmlTemplate(
+			'../common/app/views/view.html',
+			path.join(
+				'packages',
+				this.packageName,
+				'views',
+				this.arguments[1].toLowerCase() + '.html'
+			)
+		);
+	}
 });
 
 module.exports = ViewGenerator;

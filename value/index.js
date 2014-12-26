@@ -22,12 +22,11 @@ var ValueGenerator = ScriptBase.extend({
 
   // Re-write the main app module to account for our new dependency
   injectDependenciesToApp: function() {
-    angularUtils.injectIntoFile(
-      this.config.get('appPath'),
-        'services/' + this.name.toLowerCase(),
-        '',
-        this.scriptAppName + '.' + this.moduleName + this.dot + 'services'
-    );
+      angularUtils.injectIntoPackageIncludeFile(
+          path.join('app', 'packages', this.packageName, 'app.js'),
+          path.join(this.packageName, 'services', this.fileName + '-value'),
+          this.moduleNamespace
+      );
   }
 });
 

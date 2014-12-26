@@ -20,7 +20,7 @@ function injectIntoFile (appPath, moduleName, attachedComponentName, injectedMod
   var config = {
     file: path.join(
       appPath,
-      'scripts/app.js'),
+      'packages/app.js'),
     needle: "",
     splicable: [],
     spliceWithinLine: true
@@ -40,7 +40,7 @@ function injectIntoFile (appPath, moduleName, attachedComponentName, injectedMod
 
   // Check for the existence of a controllers module as an
   // application dependency. If it doesn't exist, inject it
-  var app_js = fs.readFileSync(path.join(appPath, 'scripts/app.js'), 'utf8');
+  var app_js = fs.readFileSync(path.join(appPath, 'packages/app.js'), 'utf8');
   var regex_app_module = new RegExp(injectedModuleName);
 
   if (!regex_app_module.test(app_js)) {
@@ -68,7 +68,7 @@ function injectIntoPackageIncludeFile (packageIncludePath, modulePath, injectedM
   rewriteFile(config);
 
   config.needle = "/*packageDeps*/";
-  config.splicable = [ ", '" + injectedModuleName + "'" ];
+  config.splicable = [ "'" + injectedModuleName + "'," ];
 
   rewriteFile(config);
 }

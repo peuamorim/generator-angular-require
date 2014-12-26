@@ -25,9 +25,9 @@ var ServiceGenerator = ScriptBase.extend({
 		// Re-write the main app module to account for our new dependency
 		injectDependenciesToApp: function () {
 			angularUtils.injectIntoPackageIncludeFile(
-				path.join('app', 'packages', this.packageName, 'include.js'),
-				path.join(this.packageName, 'services', this.fileName + '-value'),
-				this.packageNamespace
+				path.join('app', 'packages', this.packageName, 'app.js'),
+				path.join(this.packageName, 'services', this.fileName + '-service'),
+				this.moduleNamespace
 			);
 		}
 	}

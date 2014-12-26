@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%%= yeoman.app %>/packages/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%%= connect.options.livereload %>'
@@ -124,7 +124,7 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%%= yeoman.app %>/packages/{,*/}*.js'
         ]
       },
       test: {
@@ -185,7 +185,7 @@ module.exports = function (grunt) {
         cssDir: '.tmp/styles',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%%= yeoman.app %>/images',
-        javascriptsDir: '<%%= yeoman.app %>/scripts',
+        javascriptsDir: '<%%= yeoman.app %>/packages',
         fontsDir: '<%%= yeoman.app %>/styles/fonts',
         importPath: './bower_components',
         httpImagesPath: '/images',
@@ -310,7 +310,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           // cwd: '<%%= yeoman.app %>/scripts',
-          src: ['<%%= yeoman.app %>/scripts/**/*.js', '!<%%= yeoman.app %>/scripts/oldieshim.js'],
+          src: ['<%%= yeoman.app %>/packages/**/*.js', '!<%%= yeoman.app %>/packages/oldieshim.js'],
           dest: '.tmp'
         }]
       }
@@ -405,7 +405,7 @@ module.exports = function (grunt) {
     // Settings for grunt-bower-requirejs
     bower: {
       app: {
-        rjsConfig: '<%%= yeoman.app %>/scripts/main.js',
+        rjsConfig: '<%%= yeoman.app %>/packages/main.js',
         options: {
           exclude: ['requirejs', 'json3', 'es5-shim']
         }
@@ -419,7 +419,7 @@ module.exports = function (grunt) {
         replacements: [{
           from: /paths: {[^}]+}/,
           to: function() {
-            return require('fs').readFileSync(grunt.template.process('<%%= yeoman.app %>') + '/scripts/main.js').toString().match(/paths: {[^}]+}/);
+            return require('fs').readFileSync(grunt.template.process('<%%= yeoman.app %>') + '/packages/main.js').toString().match(/paths: {[^}]+}/);
           }
         }]
       }
@@ -429,14 +429,14 @@ module.exports = function (grunt) {
     requirejs: {
       dist: {
         options: {
-          dir: '<%%= yeoman.dist %>/scripts/',
+          dir: '<%%= yeoman.dist %>/packages/',
           modules: [{
             name: 'main'
           }],
           preserveLicenseComments: false, // remove all comments
           removeCombined: true,
-          baseUrl: '.tmp/<%%= yeoman.app %>/scripts',
-          mainConfigFile: '.tmp/<%%= yeoman.app %>/scripts/main.js',
+          baseUrl: '.tmp/<%%= yeoman.app %>/packages',
+          mainConfigFile: '.tmp/<%%= yeoman.app %>/packages/main.js',
           optimize: 'uglify2',
           uglify2: {
             mangle: false

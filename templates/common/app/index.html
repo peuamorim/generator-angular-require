@@ -31,11 +31,7 @@
         <h3 class="text-muted"><%= appname %></h3>
       </div>
 
-      <% if (ngRoute) {
-        %><div ng-view></div><%
-      } else {
-        %><div ng-include="'views/main.html'" ng-controller="MainCtrl"></div><%
-      } %>
+      <div ng-view></div>
 
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
@@ -60,6 +56,6 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <script src="bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+    <script src="bower_components/requirejs/require.js" data-main="packages/main.js"></script>
   </body>
 </html>

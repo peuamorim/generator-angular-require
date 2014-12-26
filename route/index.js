@@ -10,6 +10,9 @@ var RouteGenerator = ScriptBase.extend({
 	constructor: function () {
 		ScriptBase.apply(this, arguments);
 
+		this.routeName = this.arguments[1];
+
+
 		this.option('uri', {
 			desc: 'Allow a custom uri for routing',
 			type: String,
@@ -18,7 +21,7 @@ var RouteGenerator = ScriptBase.extend({
 
 		var bower = require(path.join(process.cwd(), 'bower.json'));
 		var match = require('fs').readFileSync(
-			path.join(this.config.get('appPath'), 'scripts/app.js'), 'utf-8'
+			path.join(this.config.get('appPath'), 'packages', this.packageName, 'app.js'), 'utf-8'
 		).match(/\.when/);
 
 		if (
@@ -41,19 +44,16 @@ var RouteGenerator = ScriptBase.extend({
 
 				return;
 			}
-
-			this.uri = this.name;
+			this.uri = path.join(this.packageName, this.routeName);
 			if (this.options.uri) {
 				this.uri = this.options.uri;
 			}
 
 			var config = {
-				file: path.join(
-					this.config.get('appPath'),
-					'scripts/app.js'),
+				file: path.join(this.config.get('appPath'), 'packages', this.packageName, 'app.js'),
 				needle: '.otherwise',
 				splicable: [
-					"  templateUrl: 'views/" + this.name.toLowerCase() + ".html',",
+					"  templateUrl: 'packages/acesso/views/" + this.routeName.toLowerCase() + ".html',",
 					"  controller: '" + this.artifactName + "Ctrl'"
 				]
 			};
@@ -63,11 +63,11 @@ var RouteGenerator = ScriptBase.extend({
 
 			angularUtils.rewriteFile(config);
 
-			this.composeWith('controller', {arguments: [this.name]}, {
+			this.composeWith('controller', {arguments: [this.packageName, this.arguments[1]]}, {
 				local: require.resolve('../controller/index.js')
 			});
 
-			this.composeWith('view', {arguments: [this.name.toLowerCase()]}, {
+			this.composeWith('view', {arguments: [this.packageName, this.arguments[1]]}, {
 				local: require.resolve('../view/index.js')
 			});
 		}

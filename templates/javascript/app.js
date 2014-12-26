@@ -11,15 +11,5 @@ define(['angular']/*deps*/, function (angular)/*invoke*/ {
    * Main module of the application.
    */
   return angular
-    .module('<%= scriptAppName %>', [/*angJSDeps*/<%= angularModules %>])<% if (ngRoute) { %>
-    .config(function ($routeProvider) {
-      $routeProvider
-        .when('/', {
-          templateUrl: 'views/main.html',
-          controller: 'MainCtrl'
-        })
-        .otherwise({
-          redirectTo: '/'
-        });
-    })<% } %>;
+    .module('<%= scriptAppName %>', [/*angJSDeps*/<%= angularModules %>]);
 });
