@@ -17,6 +17,17 @@ var DirectiveGenerator = ScriptBase.extend({
 			'directives',
 			'directive'
 		);
+
+		this.htmlTemplate(
+			'../common/app/views/view.html',
+			path.join(
+				'packages',
+				this.packageName,
+				'directives',
+				'templates',
+				this.arguments[1].toLowerCase() + '.html'
+			)
+		);
 	},
 
 	//// Re-write the main app module to account for our new dependency

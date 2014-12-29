@@ -8,7 +8,7 @@ define(['./module'], function (module) {
 	 * # <%= artifactName %>
 	 * Service in the <%= scriptAppName %>.
 	 */
-	module.service('<%= artifactName %>Service', ['$resource', 'hostConstant', 'basePath',
+	module.service('<%= artifactName %>Service', ['$resource',
 		function ($resource) {
 			return $resource('/my/rest-url', {id: '@id', action: '@action'}, {
 				show: {method: 'GET'},

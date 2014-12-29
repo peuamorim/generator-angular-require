@@ -53,7 +53,7 @@ var RouteGenerator = ScriptBase.extend({
 				file: path.join(this.config.get('appPath'), 'packages', this.packageName, 'app.js'),
 				needle: '.otherwise',
 				splicable: [
-					"  templateUrl: 'packages/acesso/views/" + this.routeName.toLowerCase() + ".html',",
+					"  templateUrl: 'packages/" + this.packageName + "/views/" + this.routeName.toLowerCase() + ".html',",
 					"  controller: '" + this.artifactName + "Ctrl'"
 				]
 			};
