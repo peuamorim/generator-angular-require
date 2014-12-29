@@ -48,7 +48,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 		// util.inherits(ScriptBase, yeoman.generators.NamedBase);
 	},
 
-	setEnviromentsVars: function(args){
+	setEnviromentsVars: function (args) {
 		this.appname = this._.slugify(this._.humanize(this.appname));
 
 		this.scriptAppName = this._.camelize(this.appname) + angularUtils.appName(this);
@@ -62,8 +62,8 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 
 			var submodule = '';
 			if (parts.length > 1) {
-				parts = parts.slice(0, parts.length-1);
-				for (var i=0; i< parts.length; i++) {
+				parts = parts.slice(0, parts.length - 1);
+				for (var i = 0; i < parts.length; i++) {
 					if (i == 0) {
 						parts[i] = this.uncapitalize(parts[i]);
 					} else {
@@ -74,7 +74,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 				submodule = parts.join('.');
 			}
 			var parts = this.options.namespace.split(':');
-			var artifactType = parts[parts.length-1];
+			var artifactType = parts[parts.length - 1];
 
 			if (submodule == '') {
 				this.moduleNamespace = this.scriptAppName + '.' + this.packageName + '.' + pluralize(artifactType);
@@ -140,7 +140,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 			moduleName = 'module';
 		} else {
 			var parts = this.fileName.split('/');
-			parts[parts.length-1] = 'module';
+			parts[parts.length - 1] = 'module';
 			moduleName = parts.join('/');
 		}
 
@@ -156,7 +156,15 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 	pascalize: function (str) {
 		str = str == null ? '' : String(str);
 		return this.uncapitalize(this._.camelize(str));
+	},
+
+	hyphenize: function (str) {
+		str = str == null ? '' : String(str);
+		return str.replace(/([A-Z])/g, function ($1) {
+			return "-" + $1.toLowerCase();
+		});
 	}
-});
+})
+;
 
 module.exports = ScriptBase;

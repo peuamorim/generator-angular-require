@@ -1,4 +1,4 @@
-define(['./module'], function (angular) {
+define(['./module'], function (module) {
 	'use strict';
 
 	/**
@@ -9,7 +9,7 @@ define(['./module'], function (angular) {
 	 * # <%= artifactName %>
 	 * Filter in the <%= scriptAppName %>.
 	 */
-	module.directive('<%= artifactName %>Filter', function () {
+	module.filter('<%= artifactName %>Filter', function () {
 		return function (input) {
 			return '<%= artifactName %> filter: ' + input;
 		};
