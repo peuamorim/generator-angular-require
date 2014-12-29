@@ -12,7 +12,6 @@ var RouteGenerator = ScriptBase.extend({
 
 		this.routeName = this.arguments[1];
 
-
 		this.option('uri', {
 			desc: 'Allow a custom uri for routing',
 			type: String,
@@ -53,7 +52,7 @@ var RouteGenerator = ScriptBase.extend({
 				file: path.join(this.config.get('appPath'), 'packages', this.packageName, 'app.js'),
 				needle: '.otherwise',
 				splicable: [
-					"  templateUrl: 'packages/" + this.packageName + "/views/" + this.routeName.toLowerCase() + ".html',",
+					"  templateUrl: 'packages/" + this.packageName + "/views/" + this.hyphenize(this.routeName) + ".html',",
 					"  controller: '" + this.artifactName + "Ctrl'"
 				]
 			};
@@ -67,9 +66,10 @@ var RouteGenerator = ScriptBase.extend({
 				local: require.resolve('../controller/index.js')
 			});
 
-			this.composeWith('view', {arguments: [this.packageName, this.arguments[1]]}, {
+			this.composeWith('view', {arguments: [this.packageName, this.hyphenize(this.arguments[1])]}, {
 				local: require.resolve('../view/index.js')
 			});
+
 		}
 	}
 });

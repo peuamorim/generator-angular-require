@@ -58,7 +58,7 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 			this.artifactName = this.pascalize(this.packageName) + this._.classify(args[1]);
 
 			var parts = args[1].split('/');
-			this.fileName = args[1];
+			this.fileName = this.hyphenize(args[1]);
 
 			var submodule = '';
 			if (parts.length > 1) {
@@ -156,10 +156,6 @@ var ScriptBase = yeoman.generators.NamedBase.extend({
 	pascalize: function (str) {
 		str = str == null ? '' : String(str);
 		return this.uncapitalize(this._.camelize(str));
-	},
-
-	pluralize: function (str) {
-
 	}
 });
 

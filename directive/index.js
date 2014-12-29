@@ -25,7 +25,7 @@ var DirectiveGenerator = ScriptBase.extend({
 				this.packageName,
 				'directives',
 				'templates',
-				this.arguments[1].toLowerCase() + '.html'
+				this.hyphenize(this.arguments[1]) + '.html'
 			)
 		);
 	},
